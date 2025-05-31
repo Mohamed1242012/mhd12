@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: mhd12
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build the Docker image
+      run: docker build . -t mhd12/mhd12:latest
+
+    - name: Push the Docker image
+      run: docker push mhd12/mhd12:latest
