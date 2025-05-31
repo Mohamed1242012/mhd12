@@ -127,5 +127,3 @@ def handle_all_errors(error):
     }
     print(error_info)
     return render_template("errors/error.html", page_info=page_info, error=error_info), code
-
-app.run("0.0.0.0",port=5000, debug=True)
