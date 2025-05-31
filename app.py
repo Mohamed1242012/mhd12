@@ -59,7 +59,7 @@ def readPosts(posts_to_read,reverse):
 def home():
     page_info={
         "title": "Home",
-        "description": "mhd12 (Mohamed Elsayed) - Web Developer, Homelabber, and Blogger based in Sharjah, UAE. Explore my projects, blog posts, and more.",
+        "description": "mhd12 (Mohamed Elsayed) - Web Developer, Homelabber, based in Sharjah, UAE. Explore my projects, blog posts, and more.",
         "img": url_for("static", filename="me.png")
     }
     posts = readPosts(3,True)
@@ -69,7 +69,7 @@ def home():
 def blog():
     page_info={
         "title": "Blog",
-        "description": "mhd12 (Mohamed Elsayed) - Web Developer, Homelabber, and Blogger based in Sharjah, UAE. Explore my projects, blog posts, and more.",
+        "description": "mhd12 (Mohamed Elsayed) - Web Developer, Homelabber, based in Sharjah, UAE. Explore my projects, blog posts, and more.",
         "img": url_for("static", filename="me.png")
     }
     sort = request.args.get("sort", "new")
