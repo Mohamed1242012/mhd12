@@ -125,5 +125,4 @@ def handle_all_errors(error):
     page_info = {
         "title": f"{code} Error",
     }
-    print(error_info)
     return render_template("errors/error.html", page_info=page_info, error=error_info), code
