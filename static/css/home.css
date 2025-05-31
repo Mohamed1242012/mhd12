@@ -172,6 +172,12 @@ mark {
   padding: 0.1em 0.3em;
 }
 
+code {
+  padding: 0.1em 0.3em;
+  background-color: #222;
+  font-size: 0.9rem;
+}
+
 .blog-md {
   line-height: 1.7;
 }
@@ -216,6 +222,17 @@ mark {
 
 .blog-md th {
   background: #222;
+}
+
+.blog-md blockquote {
+  border-left: 4px solid #333;
+  padding-left: 1.2rem;
+  margin-bottom: 0.7rem;
+  margin-top: 0.7rem;
+  background: #181818;
+  color: #facc15;
+  font-style: italic;
+  clear:both;
 }
 
 .blog-md .toc {
