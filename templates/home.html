@@ -1,0 +1,209 @@
+{% extends "base.html" %} {% block main %}
+<section id="who">
+  <div class="img-div">
+    <img
+      src="{{ url_for('static', filename='me.png') }}"
+      alt="mhd12 profile picture"
+      class="profile-img"
+    />
+  </div>
+  <div class="my-info">
+    <h1><span>mhd12</span> (Mohamed Elsayed)</h1>
+    <p><i class="fa-solid fa-location-dot"></i> UAE, Sharjah</p>
+    <p>Fullstack Web Developer - Homelabber</p>
+    <div class="tech-icons">
+      <i class="devicon-flask-original-wordmark dev-icon"></i>
+      <i class="devicon-postgresql-plain-wordmark dev-icon"></i>
+      <i class="devicon-bash-plain dev-icon"></i>
+      <i class="devicon-bootstrap-plain-wordmark dev-icon"></i>
+      <i class="devicon-react-original-wordmark dev-icon"></i>
+      <i class="devicon-docker-plain-wordmark dev-icon"></i>
+      <i class="devicon-nixos-plain-wordmark dev-icon"></i>
+      <i class="devicon-git-plain-wordmark dev-icon"></i>
+    </div>
+    <p class="my-description">
+      A 13 year old developer who likes networking, servers, homelabbing, web
+      development and cybersecurity here and there.
+    </p>
+    <p>
+      This is my personal site, it containes my projects, a blog, and info about
+      me.
+    </p>
+    <p>
+      Links: <a href="https://www.youtube.com/@mhd12e">YouTube</a>
+      <a href="https://github.com/mohamed1242012">Github</a>
+      <a href="https://www.linkedin.com/in/mhd12/">Linked In</a>
+      <a href="mailto:mhd12@devlix.org">Email</a>
+    </p>
+    <p class="small-p">
+      This website dose not collect or log any data, No JavaScript, Every thing
+      here is server side rendered.
+    </p>
+    <p class="small-p">
+      External links like the ones for the font or icons may log some data tho.
+    </p>
+    <a href="#contact"><button class="first-btn">Contact</button></a>
+  </div>
+</section>
+<section id="blog">
+  <div class="blog-latest-head">
+    <h1>Latest Blog Posts</h1>
+
+    <p class="small-p">
+      * <i class="fa-solid fa-map-pin"></i> Means that this post is pinned.
+    </p>
+  </div>
+  <div class="posts">
+    {% set pinned_posts = posts|selectattr('pinned', 'equalto',
+    True)|sort(attribute='priority')|list %} {% set unpinned_posts =
+    posts|selectattr('pinned', 'equalto', False)|list %} {% for post in
+    pinned_posts + unpinned_posts %}
+    <div class="post">
+      <div class="post-img">
+        <img
+          src="{{ url_for('static', filename='posts/img/' ~ post.img) }}"
+          alt=""
+        />
+      </div>
+      <div class="post-info">
+        <a href="{{ url_for('blog_page', id=post.id) }}">
+          {% if post.pinned %}
+          <i class="fa-solid fa-map-pin"></i>
+          {% endif %} {{ post.title }}
+        </a>
+        <p>{{ post.tags }}</p>
+        <p>{{ post.date }}</p>
+        <p>{{ post.excerpt }}</p>
+      </div>
+    </div>
+    {% endfor %}
+    <a href="/blog/">See more</a>
+  </div>
+</section>
+<section id="about">
+  <h1>About me</h1>
+  <p>
+    I am Mohamed, a 13 year old Egyptian who lives in the UAE, I starting the
+    coding learning journey as soon as that virus began began to spread in 2020,
+    since there was nothing to do, I starting searching Google: "How to create
+    windows programs". I learned some <mark>Python</mark> and
+    <mark>C#</mark> and made some basic CLI projects.
+  </p>
+  <p>
+    Some years past and I am learning a lot of things, hmm... Why dont I learn
+    some web development? and I did, I liked it more than any thing. I learned
+    front end development first, then learned backend with <mark>Flask</mark>, I
+    chose it since I already known Python.
+  </p>
+</section>
+<section id="projects">
+  <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2>2020</h2>
+        <p>
+          Learned Python, <mark>C#</mark> and some <mark>HTML</mark>, did small
+          websites and cli apps.
+        </p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>2021</h2>
+        <p>
+          Made a lot of programs with C#, and made my
+          <a href="https://sites.google.com/view/softwaremagicold/home"
+            >old website</a
+          >.
+        </p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>2022</h2>
+        <p>
+          Was a calm year, Tried <mark>Linux</mark> for the first time,
+          installed Ubuntu, and learned <mark>video editing</mark>.
+        </p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>2023</h2>
+        <p>
+          Bought a web development course on Udemy and grinded the first half of
+          it (frontend), but the backend explanation wasn't the best, so I
+          stayed on the frontend phase for some time. I did some
+          <mark><a href="/blog/id/">responsive websites with Bootstrap</a></mark
+          >.<br /><mark class="pop-txt"
+            ><a href="/blog/id/">I won one competition this year</a></mark
+          >.
+        </p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>2024 - Now</h2>
+        <p>
+          Learned <mark>Flask</mark> for backend development, in the beginning I
+          used json files as databases, but then I learned
+          <mark>PostgreSQL</mark>. Learned Linux to be comfortable using the
+          terminal. Made the
+          <mark><a href="/blog/id/">Devlix WM Project</a></mark> I tried
+          <mark><a href="/blog/id/">hosting websites on a VPS</a></mark
+          >, and securing Linux Servers from brute fource attacks. Also learned
+          <mark>Docker</mark>, <mark>React JS</mark>, and
+          <mark><a href="/blog/id">Virtualization in Proxmox</a></mark
+          >. I won in 2 competition this year:
+        </p>
+        <ul>
+          <li>🥇 Future Hacks 7 Hackathon | Junior Round</li>
+          <ul>
+            <li><a href="/blog/id/">AI Courses Project</a></li>
+          </ul>
+          <li>
+            🥈 Friends for Diabetes Society | The super hero | Innovation
+            Section
+          </li>
+          <ul>
+            <li><a href="/blog/id/">Sugar Monitor Project</a></li>
+          </ul>
+        </ul>
+        <p>This was the best year so far.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="edu">
+  <h1>Education</h1>
+  <ul>
+    <li>Al Noor International School | 2024 - Now</li>
+    <ul>
+      <li>
+        Here I did won most of my prizes and learned the most. I won the second
+        place in
+        <mark
+          ><a href="/blog/id/"
+            >Friends For Diabetes Society | The Super Hero</a
+          ></mark
+        >
+        and made a <mark><a href="/blog/id/">library system</a></mark> for this
+        school.
+      </li>
+    </ul>
+    <li><strong>Sharjah Private School | 2016 - 2024</strong></li>
+    <ul>
+      <li>
+        I won one competition in this school for making a
+        <mark><a href="/blog/id/">Youtube Video Downloader</a></mark> in Python.
+      </li>
+    </ul>
+  </ul>
+</section>
+<section id="contact" style="margin-bottom: 0">
+  <h1>Contact</h1>
+  <p>
+    You can reach me at: <a href="mailto:mhd12@devlix.org">mhd12@devlix.org</a>
+  </p>
+</section>
+{% endblock main %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+<a class="back-to-posts" href="/blog"><i class="fa-solid fa-rotate-left"></i> Back to all posts</a>
+<div class="post-head">
+    <p>Written on: {{ post.date }}</p>
+    <p>Tags: {{ post.tags }}</p>
+    <h1>{{post.title}}</h1>
+    <img src="{{ page_info.img }}" alt="">
+    <hr>
+</div>
+<div class="blog-md">
+{{ post.html | safe }}
+</div>
+
+{% endblock main %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block main %}
+<div class="blog-page-title">
+  <h1>Blog</h1>
+  <p>
+    Sort by: {% if sort == "old" %} <a href="/blog?sort=new">Newest</a> -
+    <a href="/blog?sort=old"><mark>Oldest</mark></a>
+    {% else %}
+    <a href="/blog?sort=new"><mark>Newest</mark></a> -
+    <a href="/blog?sort=old">Oldest</a>
+    {% endif %}
+  </p>
+  <p class="small-p">
+    * <i class="fa-solid fa-map-pin"></i> Means that this post is pinned.
+  </p>
+</div>
+<div class="posts">
+  {% set pinned_posts = posts|selectattr('pinned', 'equalto',
+  True)|sort(attribute='priority')|list %} {% set unpinned_posts =
+  posts|selectattr('pinned', 'equalto', False)|list %} {% for post in
+  pinned_posts + unpinned_posts %}
+  <div class="post">
+    <div class="post-img">
+      <img
+        src="{{ url_for('static', filename='posts/img/' ~ post.img) }}"
+        alt=""
+      />
+    </div>
+    <div class="post-info">
+      <a href="{{ url_for('blog_page', id=post.id) }}">
+        {% if post.pinned %}
+        <i class="fa-solid fa-map-pin"></i>
+        {% endif %} {{ post.title }}
+      </a>
+      <p>{{ post.tags }}</p>
+      <p>{{ post.date }}</p>
+      <p>{{ post.excerpt }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock main %}

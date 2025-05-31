@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block main %}
+<div class="error">
+  <div>
+    <h1>{{ error.code }}</h1>
+    <h2>{{ error.message }}</h2>
+    <a href="/">Go To Home</a>
+  </div>
+</div>
+{% endblock main %}

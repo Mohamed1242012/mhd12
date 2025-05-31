@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page_info.title }} - mhd12</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='logo.png') }}"
+    />
+    <meta name="description" content="{{ page_info.description }}" />
+    <meta name="keywords" content="{{ page_info.keywords }}" />
+    <meta name="author" content="Mohamed Elsayed" />
+    <meta property="og:title" content="{{ page_info.title }} - mhd12" />
+    <meta property="og:description" content="{{ page_info.description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://devlix.org/" />
+    <meta property="og:image" content="{{ page_info.img }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page_info.title }}" />
+    <meta name="twitter:description" content="{{ page_info.description }}" />
+    <meta name="twitter:image" content="{{ page_info.img }}" />
+    <link rel="canonical" href="https://devlix.org/" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-container">
+          <div class="site-title"><a href="/">mhd12</a></div>
+          <ul class="nav-links">
+            <li><a href="/#who">Who</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#edu">Education</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>{% block main %} {% endblock main %}</main>
+  </body>
+</html>
