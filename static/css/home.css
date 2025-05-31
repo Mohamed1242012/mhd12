@@ -230,6 +230,10 @@ mark {
   line-height: 1.5;
 }
 
+.blog-md img {
+  width: 100%;
+}
+
 .post-head img {
   width: 50%;
   margin-top: 1rem;
