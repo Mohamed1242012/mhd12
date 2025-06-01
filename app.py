@@ -6,6 +6,10 @@ import yaml
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+@app.before_request
+def log_request_info():
+    print(f"Received a {request.method} request to {request.path}")
+
 def md_to_html(file_name):
     with open(f"static/posts/md/{file_name}") as md_file:
         md_content = "[TOC]\n\n" + md_file.read()
