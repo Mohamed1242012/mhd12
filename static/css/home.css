@@ -232,7 +232,7 @@ code {
   background: #181818;
   color: #facc15;
   font-style: italic;
-  clear:both;
+  clear: both;
 }
 
 .blog-md .toc {
@@ -284,6 +284,7 @@ code {
   background-color: var(--accent-color);
   border-style: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 a {
@@ -292,11 +293,15 @@ a {
 
 .first-btn:hover {
   background-color: #c4a011;
-  transition: background-color 0.3s ease;
 }
 
 #edu ul {
   margin-left: 2rem;
+}
+
+.first-btn-wrapper {
+  text-decoration: none;
+  color: var(--accent-color);
 }
 
 @media (max-width: 800px) {
@@ -317,7 +322,6 @@ a {
     font-size: 0.95em;
     line-height: 1.5;
   }
-  
 }
 
 /* Responsive */
