@@ -2,6 +2,9 @@ from flask import Flask, render_template, url_for, request, abort
 import markdown
 from markdown.extensions.toc import TocExtension
 import yaml
+from flask import Response
+from datetime import datetime
+from email.utils import format_datetime
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -58,6 +61,39 @@ def readPosts(posts_to_read,reverse):
         posts = posts[:posts_to_read]
     return posts
 
+def convert_to_rfc822(date_str):
+    # Convert "1.6.2025" to datetime
+    dt = datetime.strptime(date_str, "%d.%m.%Y")
+    return format_datetime(dt)
+
+
+@app.route("/rss.xml")
+def rss_feed():
+    posts = readPosts(0, True)
+    rss_items = ""
+    for post in posts:
+        rss_items += f"""
+        <item>
+            <title>{post['title']}</title>
+            <link>{request.url_root.rstrip('/')}{url_for('blog_page', id=post['id'])}</link>
+            <description><![CDATA[{post['excerpt']}]]></description>
+            <pubDate>{convert_to_rfc822(post['date'])}</pubDate>
+            <guid>{request.url_root.rstrip('/')}{url_for('blog_page', id=post['id'])}</guid>
+            <author>mhd12</author>
+        </item>
+        """
+
+    rss = f"""<?xml version="1.0" encoding="UTF-8" ?>
+    <rss version="2.0">
+    <channel>
+        <title>mhd12 Blog</title>
+        <link>{request.url_root.rstrip('/')}</link>
+        <description>mhd12 (Mohamed Elsayed) - Blog RSS Feed</description>
+        {rss_items}
+    </channel>
+    </rss>
+    """
+    return Response(rss, mimetype='application/rss+xml')
 
 @app.route("/")
 def home():
